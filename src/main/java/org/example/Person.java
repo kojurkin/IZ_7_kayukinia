@@ -2,9 +2,10 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Serializable {
     @JsonProperty("surname")
     private String surname;
     @JsonProperty("name")

@@ -2,10 +2,11 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class House {
+public class House implements Serializable {
     @JsonProperty("number")
     private String number;
 

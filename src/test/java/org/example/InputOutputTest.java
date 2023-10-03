@@ -175,7 +175,7 @@ public class InputOutputTest {
     {
         InputOutput s = new InputOutput();
         File f = new File("/home/kojurkin/IdeaProjects/IZ_7_kayukinia/src/main/java");
-        List<String> l = new ArrayList<>(Arrays.asList("ran_data.txt", "test1.txt", "data.txt", "serializeHouse.txt", "serialize.txt"));
+        List<String> l = new ArrayList<>(Arrays.asList("ran_data.txt", "test1.txt", "data.txt", "serialize.txt"));
         assertEquals(l, s.getFiles(f, "txt"));
     }
     @Test

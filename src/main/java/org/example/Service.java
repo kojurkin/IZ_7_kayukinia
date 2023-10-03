@@ -14,10 +14,10 @@ public class Service {
         {
             out.writeObject(house);
         }
-        catch (IOException e)
+        /*catch (IOException e)
         {
             throw new Exception("Wrong stream!");
-        }
+        }*/
     }
 
     public static House deserializeHouse(String filename) throws IOException, ClassNotFoundException, ClassCastException
@@ -26,7 +26,7 @@ public class Service {
         {
             return (House) in.readObject();
         }
-        catch (IOException e)
+        /*catch (IOException e)
         {
             throw new IOException("Wrong stream!");
         }
@@ -37,6 +37,6 @@ public class Service {
         catch (ClassCastException e)
         {
             throw new ClassCastException("Wrong class cast!");
-        }
+        }*/
     }
 }
