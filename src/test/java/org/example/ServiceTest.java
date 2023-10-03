@@ -12,60 +12,44 @@ public class ServiceTest {
     @Test
     public void testSerializeHouse1() throws Exception
     {
-        Data date1 = new Data(12, 3, 2004);
-        Data date2 = new Data(13, 4, 2007);
-        Data date3 = new Data(23, 1, 2002);
-        Data date4 = new Data(10, 1, 1986);
-        Data date5 = new Data(30, 5, 1974);
-        Data date6 = new Data(28, 11, 1999);
-
-        Person person1 = new Person("Ivanov", "Ivan", "Ivanovich", date1);
-        Person person2 = new Person("Dmitriev", "Dmitrii", "Dmitrievich", date2);
-        Person person3 = new Person("Liliev", "Artem", "Vladimirovich", date3);
-        Person person4 = new Person("Byinov", "Artemii", "Alekseevich", date4);
-        Person person5 = new Person("Sidorov", "Petr", "Sergeevich", date5);
-        Person person6 = new Person("Sergeev", "Sergei", "Andreevich", date6);
-
-        List<Person> list1 = new ArrayList<>(Arrays.asList(person1, person2, person3));
-        List<Person> list2 = new ArrayList<>(Arrays.asList(person4, person5, person6));
-
-        Flat flat1 = new Flat(45, 56.2, list1);
-        Flat flat2 = new Flat(74, 14.2, list2);
-
-        List<Flat> l = new ArrayList<>(Arrays.asList(flat1, flat2));
-
-        House house = new House("451261", "Omsk", "Lenina", "5a", person1, l);
-
-        Service.serializeHouse(house, "test_ser.txt");
-
-        House answer = Service.deserializeHouse("test_ser.txt");
-
+        Data firstPersonData = new Data(30, 9, 2003);
+        Data secondPersonData = new Data(10, 12, 2003);
+        Data thirdPersonData = new Data(29, 4, 2003);
+        Data fourthPersonData = new Data(11, 1, 1901);
+        Data fifthPersonData = new Data(26, 2, 1902);
+        Data sixthPersonData = new Data(23, 3, 1903);
+        Person personFirst = new Person("Kayukin", "Ilya", "Aleksandrovich", firstPersonData);
+        Person personSecond = new Person("Nelubin", "Ivan", "Sergeevich", secondPersonData);
+        Person personThird = new Person("Romanovsky", "Vanya", "Mihailovich", thirdPersonData);
+        Person personFourth = new Person("Igorev", "Igor", "Igorevich", fourthPersonData);
+        Person personFifth = new Person("Sidorov", "Sidor", "Sidorovich", fifthPersonData);
+        Person personSixth = new Person("Sergeev", "Sergei", "Sergeevich", sixthPersonData);
+        List<Person> firstFlatList = new ArrayList<>(Arrays.asList(personFirst, personSecond, personThird));
+        List<Person> secondFlatList = new ArrayList<>(Arrays.asList(personFourth, personFifth, personSixth));
+        Flat firstFlat = new Flat(123, 45.6, firstFlatList);
+        Flat secondFlat = new Flat(789, 101.1, secondFlatList);
+        List<Flat> flats = new ArrayList<>(Arrays.asList(firstFlat, secondFlat));
+        House house = new House("123456", "Omsk", "Karla Marksa", "26b", personFirst, flats);
+        Service.serializeHouse(house, "serializeHouse.txt");
+        House answer = Service.deserializeHouse("serializeHouse.txt");
         assertEquals(house, answer);
     }
 
     @Test
     public void testSerializeHouse2() throws Exception
     {
-        Data date1 = new Data(12, 3, 2004);
-        Data date2 = new Data(13, 4, 2007);
-        Data date3 = new Data(23, 1, 2002);
-
-        Person person1 = new Person("Ivanov", "Ivan", "Ivanovich", date1);
-        Person person2 = new Person("Dmitriev", "Dmitrii", "Dmitrievich", date2);
-        Person person3 = new Person("Liliev", "Artem", "Vladimirovich", date3);
-
-        List<Person> list1 = new ArrayList<>(Arrays.asList(person1, person2, person3));
-
-        Flat flat1 = new Flat(45, 56.2, list1);
-
-        List<Flat> l = new ArrayList<>(Arrays.asList(flat1));
-
-        House house = new House("451261", "Omsk", "Lenina", "5a", person3, l);
-
-        Service.serializeHouse(house, "test_ser.txt");
-
-        House answer = Service.deserializeHouse("test_ser.txt");
-
+        Data date1 = new Data(30, 9, 2003);
+        Data date2 = new Data(10, 12, 2003);
+        Data date3 = new Data(29, 4, 2003);
+        Person personFirst = new Person("Kayukin", "Ilya", "Aleksandrovich", date1);
+        Person personSecond = new Person("Nelubin", "Ivan", "Sergeevich", date2);
+        Person personThird = new Person("Romanovsky", "Vanya", "Mihailovich", date3);
+        List<Person> flatPersons = new ArrayList<>(Arrays.asList(personFirst, personSecond, personThird));
+        Flat flat = new Flat(101, 79.1, flatPersons);
+        List<Flat> flats = new ArrayList<>(Arrays.asList(flat));
+        House house = new House("123456", "Omsk", "Karla Marksa", "26b", personFirst, flats);
+        Service.serializeHouse(house, "serializeHouse.txt");
+        House answer = Service.deserializeHouse("serializeHouse.txt");
         assertEquals(house, answer);
     }
 

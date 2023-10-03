@@ -6,27 +6,25 @@ import static org.junit.Assert.*;
 
 public class PersonTest {
     @Test
-    public void testPerson1() throws Exception
+    public void testPersonConstructor() throws Exception
     {
-        Data date = new Data(12, 3, 2004);
+        Data personData = new Data(12, 3, 2004);
+        Person person = new Person("Kayukin", "Ilya", "Aleksandrovich", personData);
 
-        Person person = new Person("Ivanov", "Ivan", "Ivanovich", date);
-
-        assertTrue("Ivanov".equals(person.getSurname()) && "Ivan".equals(person.getName()) && "Ivanovich".equals(person.getPatronymic())
-                && date.equals(person.getDate()));
+        assertTrue("Kayukin".equals(person.getSurname()) && "Ilya".equals(person.getName()) && "Aleksandrovich".equals(person.getPatronymic())
+                && personData.equals(person.getDate()));
     }
 
     @Test(expected = Exception.class)
-    public void testPerson2() throws Exception
+    public void testPersonVoidName() throws Exception
     {
-        Data date = new Data(12, 3, 2004);
-
-        Person person = new Person("Ivanov", "", "Ivanovich", date);
+        Data personData = new Data(12, 3, 2004);
+        Person person = new Person("Kayukin", "", "Aleksandrovich", personData);
     }
 
     @Test(expected = Exception.class)
-    public void testPerson3() throws Exception
+    public void testPersonNullDate() throws Exception
     {
-        Person person = new Person("Ivanov", "", "Ivanovich", null);
+        Person person = new Person("Kayukin", "Ilya", "Aleksandrovich", null);
     }
 }

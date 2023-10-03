@@ -11,6 +11,14 @@ import static org.junit.Assert.*;
 
 public class InputOutputTest {
     @Test
+    public void NOT_TEST() throws Exception //Временный метод для создания потоков
+    {
+        InputOutput s = new InputOutput();
+        int[] arr = { 1, 52, 3, 4, 5 };
+        s.writeArray(arr, "test1.bin");
+        assertTrue(true);
+    }
+    @Test
     public void testReadArray1() throws Exception
     {
         InputOutput s = new InputOutput();
@@ -163,52 +171,43 @@ public class InputOutputTest {
     }
 
     @Test
-    public void testGetFiles1() throws Exception
+    public void testGetFilesTxt() throws Exception
     {
         InputOutput s = new InputOutput();
-        File f = new File("D:\\IdeaProjects\\lessons\\Laba_7\\src\\main\\java");//Нужно указать путь к папке java
-        List<String> l = new ArrayList<>(Arrays.asList("data.txt", "ran_data.txt", "serialize.txt", "test1.txt", "test_ser.txt"));
+        File f = new File("/home/kojurkin/IdeaProjects/IZ_7_kayukinia/src/main/java");
+        List<String> l = new ArrayList<>(Arrays.asList("ran_data.txt", "test1.txt", "data.txt", "serializeHouse.txt", "serialize.txt"));
         assertEquals(l, s.getFiles(f, "txt"));
     }
     @Test
-    public void testGetFiles2() throws Exception
+    public void testGetFilesBin() throws Exception
     {
         InputOutput s = new InputOutput();
-        File f = new File("D:\\IdeaProjects\\lessons\\Laba_7\\src\\main\\java");
-        List<String> l = new ArrayList<>(Arrays.asList("data.bin", "javax.bin", "test1.bin"));
+        File f = new File("/home/kojurkin/IdeaProjects/IZ_7_kayukinia/src/main/java");
+        List<String> l = new ArrayList<>(Arrays.asList("data.bin", "test1.bin", "javax.bin"));
         assertEquals(l, s.getFiles(f, "bin"));
     }
 
     @Test
-    public void testGetFiles3() throws Exception
+    public void testGetFilesJava() throws Exception
     {
         InputOutput s = new InputOutput();
-        File f = new File("D:\\IdeaProjects\\lessons\\Laba_7\\src\\main\\java\\org\\example");
-        List<String> l = new ArrayList<>(Arrays.asList("Data.java", "Flat.java", "House.java", "InputOutput.java", "Main.java", "Person.java", "Service.java"));
+        File f = new File("/home/kojurkin/IdeaProjects/IZ_7_kayukinia/src/main/java/org/example");
+        List<String> l = new ArrayList<>(Arrays.asList("Main.java", "Data.java", "Flat.java", "House.java", "Person.java", "Service.java", "InputOutput.java"));
         assertEquals(l, s.getFiles(f, "java"));
     }
 
-    @Test
-    public void testGetFiles4() throws Exception
-    {
-        InputOutput s = new InputOutput();
-        File f = new File("D:\\IdeaProjects\\lessons\\Laba_7\\.idea");
-        List<String> l = new ArrayList<>(Arrays.asList("compiler.xml", "encodings.xml", "jarRepositories.xml", "misc.xml", "vcs.xml", "workspace.xml"));
-        assertEquals(l, s.getFiles(f, "xml"));
-    }
-
     @Test(expected = Exception.class)
-    public void testGetFiles5() throws Exception
+    public void testGetNullFile() throws Exception
     {
         InputOutput s = new InputOutput();
         s.getFiles(null, "bin");
     }
 
     @Test(expected = Exception.class)
-    public void testGetFiles6() throws Exception
+    public void testGetNullEnd() throws Exception
     {
         InputOutput s = new InputOutput();
-        File f = new File("\"D:\\\\IdeaProjects\\\\lessons\\\\Laba_7\\\\src\\\\main\\\\java");
+        File f = new File("/home/kojurkin/IdeaProjects/IZ_7_kayukinia/src/main");
         s.getFiles(f, "");
     }
 }

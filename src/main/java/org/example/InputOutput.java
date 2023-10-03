@@ -120,6 +120,7 @@ public class InputOutput {
         }
         String[] files = file.list();
         List<String> l = new ArrayList<>();
+        assert files != null;
         for (String s : files) {
             if (s.endsWith(end)) {
                 l.add(s);
